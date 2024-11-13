@@ -62,6 +62,5 @@ func (n *node) search(parts []string, height int) *node {
 			return result
 		}
 	}
-
 	return nil
 }
