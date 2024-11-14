@@ -3,6 +3,7 @@ package gee
 import (
 	"log"
 	"net/http"
+	"strings"
 )
 
 type router struct {
@@ -15,6 +16,22 @@ func newRouter() *router {
 		roots:    make(map[string]*node),
 		handlers: make(map[string]HandlerFunc)}
 }
+
+
+//only one * is allowed
+func parsePattern(pattern string)[]string{
+	vs:=strings.Split(pattern, "/")
+
+	parts:=make([]string,0)
+
+	for _,item :=range vs{
+		if item !=""{
+			parts=append(parts, item)
+			if item[0]=='*'
+		}
+	}
+}
+
 
 func (r *router) addRouter(method string, pattern string, handler HandlerFunc) {
 	log.Printf("Router %4s - %s", method, pattern)
