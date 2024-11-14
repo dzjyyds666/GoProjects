@@ -18,6 +18,10 @@ type UserInfo struct {
 	Experience    string `json:"experience" gorm:"size:255"`        // 经验，长度为255
 }
 
+func (ui *UserInfo) TableName() string {
+	return "user_info"
+}
+
 func NewUserTable(db *gorm.DB) error {
 	//开启自动迁移
 	return db.AutoMigrate(&UserInfo{})
